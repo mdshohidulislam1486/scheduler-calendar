@@ -102,13 +102,9 @@ const CalendarComp = () => {
         ]
       );
 
-    const [showCalendarModal, setShowCalendarModal] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(undefined);
-   
-    const [showAssignments, setShowAssignments] = useState(true);
-    const [showCourseTimes, setShowCourseTimes] = useState(true);
-    const [showOfficeHours, setShowOfficeHours] = useState(true);
-    const [showStudySessions, setShowStudySessions] = useState(false);
+      const [showCalendarModal, setShowCalendarModal] = useState(true);
+      const [selectedDate, setSelectedDate] = useState(undefined);
+     
 
     
       const handleSelectSlot = ({ start, end, slots }) => {
@@ -161,8 +157,7 @@ const CalendarComp = () => {
         e.preventDefault();
     }
     const handleSelectEvent = (event) =>{
-        this.moveEvent = this.moveEvent.bind(this)
-    }
+        this.event = this.moveEvent.bind(this)    }
 
     
     return (
@@ -218,7 +213,7 @@ const CalendarComp = () => {
         
                 onEventDrop={moveEvent}
                 onEventResize={moveEvent}
-                onSelectEvent={(event) => handleSelectEvent(event)}
+                onSelectEvent={(event) => handleSelectEvent(event.this)}
                 onSelectSlot={handleSelectSlot}
         
                 style={{ height: 500 }}

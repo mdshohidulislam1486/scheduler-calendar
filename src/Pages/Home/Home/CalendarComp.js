@@ -190,41 +190,25 @@ const CalendarComp = () => {
 
         </Box>
 
-         <Box>
-             <DragAndDropCalendar
-             
-             
-             localizer={localizer} events={allEvents} startAccessor='start' endAccessor='end'
-             style={{height:500, margin:'50px'}}
-             />
+         <Box  className="h-auto">
+            <DragAndDropCalendar
+            selectable
+            resizable
+            popup
+            onEventDrop={moveEvent}
+            onEventResize={moveEvent}
+            onSelectEvent={(event) => handleSelectEvent(event.this)}
+            onSelectSlot={handleSelectSlot}
+            localizer={localizer} events={allEvents} startAccessor='start' endAccessor='end'
+            style={{height:500, margin:'50px'}}
+            defaultDate={new Date()}
+            />
 
              
 
          </Box>
 
-        <div className="h-auto">
-            <div>
-                <DragAndDropCalendar
-                selectable
-                resizable
-                popup
         
-                localizer={localizer}
-                events={events}
-                startAccessor="start"
-                endAccessor="end"
-        
-                onEventDrop={moveEvent}
-                onEventResize={moveEvent}
-                onSelectEvent={(event) => handleSelectEvent(event.this)}
-                onSelectSlot={handleSelectSlot}
-        
-                style={{ height: 500 }}
-                defaultDate={new Date()}
-                />
-
-            </div>
-            </div>
 
         </Container>
     );

@@ -160,6 +160,9 @@ const CalendarComp = () => {
         setAllEvents([...allEvents, newEvent])
         e.preventDefault();
     }
+    const handleSelectEvent = (event) =>{
+        this.moveEvent = this.moveEvent.bind(this)
+    }
 
     
     return (
@@ -215,7 +218,7 @@ const CalendarComp = () => {
         
                 onEventDrop={moveEvent}
                 onEventResize={moveEvent}
-                /* onSelectEvent={(event) => handleSelectEvent(event)} */
+                onSelectEvent={(event) => handleSelectEvent(event)}
                 onSelectSlot={handleSelectSlot}
         
                 style={{ height: 500 }}

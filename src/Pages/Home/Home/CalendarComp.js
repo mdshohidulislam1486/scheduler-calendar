@@ -162,7 +162,7 @@ const CalendarComp = () => {
     
     return (
         <Container>
-         {/* <Typography variant='h5' sx={{mt:5}}>
+         <Typography variant='h5' sx={{mt:5}}>
              Calander 
          </Typography>
 
@@ -191,14 +191,17 @@ const CalendarComp = () => {
         </Box>
 
          <Box>
-             <Calendar localizer={localizer} events={allEvents} startAccessor='start' endAccessor='end'
+             <DragAndDropCalendar
+             
+             
+             localizer={localizer} events={allEvents} startAccessor='start' endAccessor='end'
              style={{height:500, margin:'50px'}}
-             >
+             />
 
-             </Calendar>
+             
 
          </Box>
- */}
+
         <div className="h-auto">
             <div>
                 <DragAndDropCalendar

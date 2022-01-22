@@ -74,12 +74,31 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
 const CalendarComp = () => {
     const [events, setEvents] = useState(
         [
-          {
-            id:1,
-            title:"help",
-            start:new Date(),
-            end: new Date(),
-          }
+            {
+                title:"Big Meeting",
+                allDay: true,
+                start: new Date(2022,0,15),
+                end: new Date(2022,0,15)
+            },
+            {
+                title:"Last Meeting",
+                allDay: true,
+                start: new Date(2022,0,21),
+                end: new Date(2022,0,21)
+            },
+            {
+                title:"Birthday",
+                allDay: true,
+                start: new Date(2022,0,22),
+                end: new Date(2022,0,22)
+            },
+            {
+                title:"Marraige Ceremony",
+                allDay: true,
+                start: new Date(2022,0,2),
+                end: new Date(2022,0,2)
+            },
+        
         ]
       );
 
@@ -91,12 +110,7 @@ const CalendarComp = () => {
     const [showOfficeHours, setShowOfficeHours] = useState(true);
     const [showStudySessions, setShowStudySessions] = useState(false);
 
-    const setView = [
-        setShowAssignments,
-        setShowCourseTimes,
-        setShowOfficeHours,
-        setShowStudySessions,
-      ];
+    
       const handleSelectSlot = ({ start, end, slots }) => {
         //pop modal up, from this and be able to pass through, these slots
         setSelectedDate(start);
@@ -130,12 +144,6 @@ const CalendarComp = () => {
         var indexOfSelected = [];
         selected.map((selection) =>
           indexOfSelected.push(selection.index)
-        );
-     
-        viewOptions.map((option) =>
-          indexOfSelected.includes(option.index)
-            ? setView[option.index](true)
-            : setView[option.index](false)
         );
       };
 
@@ -213,14 +221,7 @@ const CalendarComp = () => {
                 style={{ height: 500 }}
                 defaultDate={new Date()}
                 />
-        
-                <Select
-                defaultValue={[viewOptions[0], viewOptions[1], viewOptions[2]]}
-                isMulti
-                options={viewOptions}
-                name="View"
-                onChange={filterViewChange}
-                />
+
             </div>
             </div>
 

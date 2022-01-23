@@ -3,7 +3,7 @@ import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
-import { Calendar, dateFnsLocalizer, Views } from "react-big-calendar";
+import { Calendar, dateFnsLocalizer, momentLocalizer, Views } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -36,8 +36,9 @@ const localizer = dateFnsLocalizer({
     locales
 })
 
-const DragAndDropCalendar = withDragAndDrop(Calendar);
 
+
+const DragAndDropCalendar = withDragAndDrop(Calendar);
 
 
     
@@ -86,16 +87,14 @@ const CalendarComp = () => {
       };
 
       const moveEvent = ({ event, start, end }) => {
-        const thisEvent = event;
-     
-        const nextEvents = events.map((existingEvent) => {
-          return existingEvent.id == event.id
-            ? { ...existingEvent, start, end }
-            : existingEvent;
-        });
+      
+        const idx = events.indexOf(event);
+        const updatedEvent = { ...event, start, end };
+        const nextEvents = [...events];
+        nextEvents.splice(idx, 1, updatedEvent);
         setEvents(nextEvents);
       };
-
+     
 
     const filterViewChange = (selected) => {
         var indexOfSelected = [];
@@ -163,13 +162,12 @@ const CalendarComp = () => {
             onSelectEvent={(events) => handleSelectEvent(events)}
             onSelectSlot={handleSelectSlot}
             localizer={localizer}
-            events={allEvents || events}
+            events={events || allEvents}
             startAccessor='start' endAccessor='end'
             style={{height:500, margin:'50px'}}
             defaultDate={new Date()}
             />
 
-             
 
          </Box>
 

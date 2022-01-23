@@ -117,7 +117,9 @@ const CalendarComp = () => {
         setAllEvents([...allEvents, newEvent])
         e.preventDefault();
     }
-    const handleSelectEvent = (event) =>{
+
+
+    const handleSelectEvent = () =>{
         this.event = this.moveEvent.bind(this)    }
 
     
@@ -158,9 +160,11 @@ const CalendarComp = () => {
             popup
             onEventDrop={moveEvent}
             onEventResize={moveEvent}
-            onSelectEvent={(event) => handleSelectEvent(event.this)}
+            onSelectEvent={(events) => handleSelectEvent(events)}
             onSelectSlot={handleSelectSlot}
-            localizer={localizer} events={events} startAccessor='start' endAccessor='end'
+            localizer={localizer}
+            events={allEvents || events}
+            startAccessor='start' endAccessor='end'
             style={{height:500, margin:'50px'}}
             defaultDate={new Date()}
             />

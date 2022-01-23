@@ -42,7 +42,7 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
 
     
 
-/* const events =[
+const listofEvents =[
     {
         title:"Big Meeting",
         allDay: true,
@@ -68,39 +68,11 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
         end: new Date(2022,0,2)
     },
 ]
- */
+
 
 
 const CalendarComp = () => {
-    const [events, setEvents] = useState(
-        [
-            {
-                title:"Big Meeting",
-                allDay: true,
-                start: new Date(2022,0,15),
-                end: new Date(2022,0,15)
-            },
-            {
-                title:"Last Meeting",
-                allDay: true,
-                start: new Date(2022,0,21),
-                end: new Date(2022,0,21)
-            },
-            {
-                title:"Birthday",
-                allDay: true,
-                start: new Date(2022,0,22),
-                end: new Date(2022,0,22)
-            },
-            {
-                title:"Marraige Ceremony",
-                allDay: true,
-                start: new Date(2022,0,2),
-                end: new Date(2022,0,2)
-            },
-        
-        ]
-      );
+    const [events, setEvents] = useState(listofEvents);
 
       const [showCalendarModal, setShowCalendarModal] = useState(true);
       const [selectedDate, setSelectedDate] = useState(undefined);
@@ -125,6 +97,13 @@ const CalendarComp = () => {
       };
 
 
+    const filterViewChange = (selected) => {
+        var indexOfSelected = [];
+        selected.map((selection) =>
+          indexOfSelected.push(selection.index)
+        );
+      };
+
     const DragAndDropCalendar = withDragAndDrop(Calendar);
 
     const [newEvent, setNewEvent] = useState({
@@ -138,7 +117,9 @@ const CalendarComp = () => {
         setAllEvents([...allEvents, newEvent])
         e.preventDefault();
     }
-  
+    const handleSelectEvent = (event) =>{
+        this.event = this.moveEvent.bind(this)    }
+
     
     return (
         <Container>
@@ -177,7 +158,7 @@ const CalendarComp = () => {
             popup
             onEventDrop={moveEvent}
             onEventResize={moveEvent}
-           /*  onSelectEvent={(event) => handleSelectEvent(event.this)} */
+            onSelectEvent={(event) => handleSelectEvent(event.this)}
             onSelectSlot={handleSelectSlot}
             localizer={localizer} events={events} startAccessor='start' endAccessor='end'
             style={{height:500, margin:'50px'}}

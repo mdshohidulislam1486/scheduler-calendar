@@ -124,24 +124,6 @@ const CalendarComp = () => {
         setEvents(nextEvents);
       };
 
-      
-    const viewOptions = [
-        { value: "Assignments", label: "Assignment due dates", index: 0 },
-        { value: "Courses", label: "Courses times", index: 1 },
-        { value: "Office Hours", label: "Office hours", index: 2 },
-        {
-        value: "Study Sessions",
-        label: "Study sessions (Not implemented)",
-        index: 3,
-        },
-    ];
-
-    const filterViewChange = (selected) => {
-        var indexOfSelected = [];
-        selected.map((selection) =>
-          indexOfSelected.push(selection.index)
-        );
-      };
 
     const DragAndDropCalendar = withDragAndDrop(Calendar);
 
@@ -156,9 +138,7 @@ const CalendarComp = () => {
         setAllEvents([...allEvents, newEvent])
         e.preventDefault();
     }
-    const handleSelectEvent = (event) =>{
-        this.event = this.moveEvent.bind(this)    }
-
+  
     
     return (
         <Container>
@@ -197,9 +177,9 @@ const CalendarComp = () => {
             popup
             onEventDrop={moveEvent}
             onEventResize={moveEvent}
-            onSelectEvent={(event) => handleSelectEvent(event.this)}
+           /*  onSelectEvent={(event) => handleSelectEvent(event.this)} */
             onSelectSlot={handleSelectSlot}
-            localizer={localizer} events={allEvents} startAccessor='start' endAccessor='end'
+            localizer={localizer} events={events} startAccessor='start' endAccessor='end'
             style={{height:500, margin:'50px'}}
             defaultDate={new Date()}
             />

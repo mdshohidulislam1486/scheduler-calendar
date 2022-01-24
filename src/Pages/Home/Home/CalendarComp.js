@@ -11,7 +11,6 @@ import { Typography, Container, Box, Button} from '@mui/material';
 import "react-datepicker/dist/react-datepicker.css";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-datepicker/dist/react-datepicker.css";
-
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 
@@ -34,8 +33,6 @@ const localizer = dateFnsLocalizer({
 })
 
 
-
-const DragAndDropCalendar = withDragAndDrop(Calendar);
 
 
     
@@ -67,23 +64,20 @@ const listofEvents =[
     },
 ]
 
- const inputFields = {
-     width:"20rem",
-     margin:'.5rem 0',
-     border:'2px solid green'
- }
+    const inputFields = {
+        width:"20rem",
+        margin:'.5rem 0',
+        border:'1.5px solid '
+    }
 
-const CalendarComp = () => {
+    const CalendarComp = () => {
     const [events, setEvents] = useState(listofEvents);
     const [allEvents, setAllEvents] = useState(events)
-
-    
-      const [selectedDate, setSelectedDate] = useState(undefined);
+    const [selectedDate, setSelectedDate] = useState(undefined);
      
 
     
       const handleSelectSlot = ({ start, end, slots }) => {
-        //pop modal up, from this and be able to pass through, these slots
         setSelectedDate(start);
         return;
       };
@@ -108,39 +102,42 @@ const CalendarComp = () => {
     })
     
 
-    const handleAddEvent = (e) =>{
+const handleAddEvent = (e) =>{
         setAllEvents([...allEvents, newEvent])
-        e.preventDefault();
+        const inputs = document.getElementsByClassName('inputField')
+        inputs.forEach(input => input.value= '')
+        e.preventDefault()
+
     }
 
     return (
         <Container>
-         <Typography variant='h5' sx={{mt:5}}>
-             Calander 
+         <Typography color="#2bb3a5" variant='h2' sx={{mt:5}}>
+            Calendar Scheduler
          </Typography>
 
         <Box  sx={{mt:5}}>
-            <Typography>Add New Event</Typography>
-            <form onSubmit={handleAddEvent}>
-                <input id='field1' type="text" placeholder='Add Event' name="" id="" style={inputFields} 
+            <Typography variant='body1' color='primary'>Adda a  New Event</Typography>
+            <Box >
+                <input className='inputField' type="text" placeholder='Add Event' name="event"  style={inputFields} 
                 value={newEvent.title}
                 onChange={(e) => setNewEvent({...newEvent, title: e.target.value})}
                 />
                 <DatePicker
-             
+                className='inputField'
                 style={{marginBottom:'2em'}}
                 placeholderText='Start Date' 
                 selected={newEvent.start}
                 onChange={(start) => setNewEvent({...newEvent, start})}
                 ></DatePicker>
                 <DatePicker
-               
+                className='inputField'
                 placeholderText='End Date' style={inputFields}
                 selected={newEvent.end}
                 onChange={(end) => setNewEvent({...newEvent, end})}
                 ></DatePicker>
-                <Button type='submit'  variant="contained" sx={{mt:1}}> Add New Event</Button>
-            </form>
+                <Button size="small" type='submit'  onClick={(e)=> handleAddEvent(e)}  variant="contained" sx={{mt:1}}> Add New Event</Button>
+            </Box>
 
         </Box>
 
@@ -158,12 +155,7 @@ const CalendarComp = () => {
             style={{height:500, margin:'50px'}}
             defaultDate={new Date()}
             />
-
-
          </Box>
-
-        
-
         </Container>
     );
 };

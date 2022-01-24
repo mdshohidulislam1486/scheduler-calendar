@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Box } from '@mui/system';
 import {
@@ -13,10 +12,8 @@ function App() {
     <Box>
       <Router>
           <Routes>
-          
               <Route path='/' element={<Home />} />
               <Route path="/home" element={<Home />} />
-
           </Routes>
       </Router>
 

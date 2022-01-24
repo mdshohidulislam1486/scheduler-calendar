@@ -47,7 +47,7 @@ const listofEvents =[
         end: new Date(2022,0,22)
     },
     {
-        title:"Marraige Ceremony",
+        title:"Marriage ceremony",
         allDay: true,
         start: new Date(2022,0,2),
         end: new Date(2022,0,2)

@@ -107,7 +107,7 @@ const handleAddEvent = (e) =>{
          </Typography>
 
         <Box  sx={{mt:5}}>
-            <Typography variant='body1' color='primary'>Adda a  New Event</Typography>
+            <Typography variant='body1' color='primary'>Add a  New Event</Typography>
             <Box >
                 <input className='inputField' type="text" placeholder='Add Event' name="event"  style={inputFields} 
                 value={newEvent.title}

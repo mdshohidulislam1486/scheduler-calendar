@@ -74,6 +74,7 @@ const listofEvents =[
 
 const CalendarComp = () => {
     const [events, setEvents] = useState(listofEvents);
+    const [allEvents, setAllEvents] = useState(events)
 
       const [showCalendarModal, setShowCalendarModal] = useState(true);
       const [selectedDate, setSelectedDate] = useState(undefined);
@@ -88,11 +89,11 @@ const CalendarComp = () => {
 
       const moveEvent = ({ event, start, end }) => {
       
-        const idx = events.indexOf(event);
+        const idx = allEvents.indexOf(event);
         const updatedEvent = { ...event, start, end };
-        const nextEvents = [...events];
+        const nextEvents = [...allEvents];
         nextEvents.splice(idx, 1, updatedEvent);
-        setEvents(nextEvents);
+        setAllEvents(nextEvents);
       };
      
 
@@ -110,7 +111,7 @@ const CalendarComp = () => {
         start:'',
         end:''
     })
-    const [allEvents, setAllEvents] = useState(events)
+    
 
     const handleAddEvent = (e) =>{
         setAllEvents([...allEvents, newEvent])
@@ -119,7 +120,8 @@ const CalendarComp = () => {
 
 
     const handleSelectEvent = () =>{
-        this.event = this.moveEvent.bind(this)    }
+        const newevent =  allEvents;   
+    }
 
     
     return (
@@ -162,7 +164,7 @@ const CalendarComp = () => {
             onSelectEvent={(events) => handleSelectEvent(events)}
             onSelectSlot={handleSelectSlot}
             localizer={localizer}
-            events={events || allEvents}
+            events={allEvents}
             startAccessor='start' endAccessor='end'
             style={{height:500, margin:'50px'}}
             defaultDate={new Date()}

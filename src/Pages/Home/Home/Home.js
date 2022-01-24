@@ -10,7 +10,6 @@ const Home = () => {
     return (
     <Box>
         <CalendarComp></CalendarComp>
-        <MyCalendar></MyCalendar>
         
     </Box>
     );

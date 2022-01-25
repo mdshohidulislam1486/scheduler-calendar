@@ -12,7 +12,7 @@ import {
   DragAndDrop
 } from "@syncfusion/ej2-react-schedule";
 
-    const Index = () => {
+    const Syncfusion = () => {
     const data = [
       {
         Id: 1,
@@ -102,4 +102,4 @@ import {
     );
     };
 
-export default Index;
+export default Syncfusion;

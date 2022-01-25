@@ -1,13 +1,14 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import Index from '.';
+import Syncfusion from './Syncfusion'
 import CalendarComp from './CalendarComp';
 
 const Home = () => {
     return (
     <Box>
+        <Syncfusion></Syncfusion>
         <CalendarComp></CalendarComp>
-        <Index></Index>
+        
     </Box>
     );
 };

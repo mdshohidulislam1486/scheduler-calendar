@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Typography, Container, Box, Button} from '@mui/material';
 import {
   TimelineViews,
   TimelineMonth,
@@ -62,6 +63,10 @@ import {
     ];
   
     return (
+      <Container>
+      <Typography variant="h3" fontWeight='800' sx={{my:4}}>
+        Syncfusion  Calendar Scheduler
+      </Typography>
       <ScheduleComponent
         width="100%"
         height="650px"
@@ -99,6 +104,7 @@ import {
         </ResourcesDirective>
         <Inject services={[TimelineViews, TimelineMonth, Resize,DragAndDrop]} />
       </ScheduleComponent>
+      </Container>
     );
     };
 
